@@ -9,19 +9,18 @@ var { Modal, StyleSheet, TouchableOpacity, View } = ReactNative;
 var ActionModal = React.createClass({
   render: function() {
     return (
-      <FadeInView visible={this.props.modalVisible} backgroundColor={this.props.backgroundColor}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.props.modalVisible}
-          onRequestClose={this.props.onCancel}>
-          <View style={styles.modalContainer}>
-            <TouchableOpacity style={styles.container} onPress={this.props.onCancel}></TouchableOpacity>
-            {this.props.children}
-            <Button onPress={this.props.onCancel} text={this.props.buttonText || "Cancel"} />
-          </View>
-        </Modal>
-      </FadeInView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.props.modalVisible}
+        onRequestClose={this.props.onCancel}>
+        <FadeInView visible={this.props.modalVisible} backgroundColor={this.props.backgroundColor} />
+        <View style={styles.modalContainer}>
+          <TouchableOpacity style={styles.container} onPress={this.props.onCancel}></TouchableOpacity>
+          {this.props.children}
+          <Button onPress={this.props.onCancel} text={this.props.buttonText || "Cancel"} />
+        </View>
+      </Modal>
     );
   }
 });
